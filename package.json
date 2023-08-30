@@ -1,11 +1,11 @@
 {
-  "name": "serverless-apigateway-log-group",
+  "name": "serverless-restapi-log",
   "version": "1.0.1",
-  "description": "Serverless plugin to maintain apigateway loggroup created from v2",
+  "description": "Serverless plugin to maintain apigateway loggroup created from v2 and enable restapi log",
   "main": "src",
   "repository": {
     "type": "git",
-    "url": "git@github.com:lifengkow/serverless-apigateway-log-group.git"
+    "url": "git@github.com:lifengkow/serverless-restapi-log.git"
   },
   "files": [
     "src/index.js"
@@ -13,7 +13,7 @@
   "author": "Li Feng Kow",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.21"
+    "aws-sdk": "^2.1447.0"
   },
   "keywords": [
     "kinesis",
