@@ -1,0 +1,18 @@
+node_modules
+
+# Serverless directories
+.serverless
+*.log
+
+# Webpack directories
+.webpack
+
+# NYC
+.nyc_output
+coverage
+
+# OSX
+.DS_Store
+
+# Python
+*.pyc

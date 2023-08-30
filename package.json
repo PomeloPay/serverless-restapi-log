@@ -1,0 +1,23 @@
+{
+  "name": "serverless-apigateway-log-group",
+  "version": "1.0.1",
+  "description": "Serverless plugin to maintain apigateway loggroup created from v2",
+  "main": "src",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lifengkow/serverless-apigateway-log-group.git"
+  },
+  "files": [
+    "src/index.js"
+  ],
+  "author": "Li Feng Kow",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "keywords": [
+    "kinesis",
+    "serverless",
+    "lambda"
+  ]
+}
