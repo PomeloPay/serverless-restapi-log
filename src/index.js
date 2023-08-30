@@ -88,9 +88,9 @@ class RestApiLog {
             ],
           })
           .promise();
-      }
 
-      console.log("updatedStage", updatedStage);
+        console.log("updatedStage", updatedStage);
+      }
     } catch (error) {
       console.error("enableRestApiLog error", error);
     }
