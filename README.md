@@ -3,7 +3,7 @@
 This Serverless-restapi-log plugin enables you to have apigateway log group maintained through serverless cloudformation template.
 If this plugin is enabled, it enable restapi logs as well on apigateway
 
-In any case this plugin is removed, log group will be removed as it no longer be part of the stack template. Howevver, restapi is still enabled but no log being captured. To disbale this, a custom post deploy script is needed to check if the log group exists, otherwise disable the log
+In any case this plugin is removed, log group will be removed as it no longer be part of the stack template. Howevver, restapi is still enabled but no log being captured. To disbale this, a custom pre deploy script is needed to check this plugin is enabled, otherwise disable the log
 
 ## Installation
 
