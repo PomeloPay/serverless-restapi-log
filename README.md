@@ -1,20 +1,23 @@
-# serverless-apigateway-log-group
+# serverless-restapi-log
 
-This Serverless-apigateway-log-group plugin enables you to keep log group created from v2 when restapi log is enabled.
+This Serverless-restapi-log plugin enables you to have apigateway log group maintained through serverless cloudformation template.
+If this plugin is enabled, it enable restapi logs as well on apigateway
+
+In any case this plugin is removed, log group will be removed as it no longer be part of the stack template. Howevver, restapi is still enabled but no log being captured. To disbale this, a custom post deploy script is needed to check if the log group exists, otherwise disable the log
 
 ## Installation
 
-First, add `serverless-apigateway-log-group to your project:
+First, add `serverless-restapi-log to your project:
 
 ```sh
-npm install serverless-apigateway-log-group
+npm install serverless-restapi-log
 ```
 
 Then inside your project's `serverless.yml` file, add following entry to the plugins section
 
 ```yml
 plugins:
-  - serverless-apigateway-log-group
+  - serverless-restapi-log
 ```
 
 [See example](./example/README.md)
@@ -28,7 +31,8 @@ To configure it, add something like the following to your `serverless.yml`.
 
 ```yml
 custom:
-  serverless-apigateway-log-group:
+  serverless-restapi-log:
     log-group: /aws/my-api/${self:provider.stage}/access-logs
+    format: '{ "requestId":"$context.requestId", "ip": "$context.identity.sourceIp", "caller":"$context.identity.caller", "user":"$context.identity.user","requestTime":"$context.requestTime", "httpMethod":"$context.httpMethod","resourcePath":"$context.resourcePath", "status":"$context.status","protocol":"$context.protocol", "responseLength":"$context.responseLength" }'
     log-group-retention: 14 # optional, default to 7
 ```
