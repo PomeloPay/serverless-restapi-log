@@ -37,7 +37,7 @@ class RestApiLog {
     const stackName = this.serverless.service.provider.stackName;
 
     const existingStackTemplate = await cloudfromation
-      .getTemplate({ stackName })
+      .getTemplate({ StackName: stackName })
       .promise();
     console.log("existingStackTemplate", existingStackTemplate);
 
