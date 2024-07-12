@@ -2,6 +2,7 @@ const AWS = require("aws-sdk");
 
 const apiGateway = new AWS.APIGateway({});
 const cloudWatchLogs = new AWS.CloudWatchLogs({});
+const cloudfromation = new AWS.CloudFormation({});
 
 class RestApiLog {
   constructor(serverless, options) {
@@ -30,9 +31,15 @@ class RestApiLog {
     };
   }
 
-  addApiGatewayLogGroup() {
+  async addApiGatewayLogGroup() {
     const template =
       this.serverless.service.provider.compiledCloudFormationTemplate;
+    const stackName = this.serverless.service.provider.stackName;
+
+    const existingStackTemplate = await cloudfromation
+      .getTemplate({ stackName })
+      .promise();
+    console.log("existingStackTemplate", existingStackTemplate);
 
     // ApiGatewayLogGroup
     template.Resources.ApiGatewayLogGroup = {
