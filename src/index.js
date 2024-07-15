@@ -71,6 +71,7 @@ class RestApiLog {
 
         const logGroup = await this.getLogGroupByName(this.configuration['log-group'])
         if (!logGroup) {
+          console.log('log group not exists, adding into stack...')
           template.Resources.ApiGatewayLogGroup = {
             Type: 'AWS::Logs::LogGroup',
             Properties: {
