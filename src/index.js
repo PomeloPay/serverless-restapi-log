@@ -43,14 +43,20 @@ class RestApiLog {
     console.log('==============ADD API GATEWAY LOG GROUP==============')
     const template = this.serverless.service.provider.compiledCloudFormationTemplate
     const stackName = this.serverless.service.provider.stackName
+    console.log('stackName', stackName)
 
     const existingTemplate = await cloudFormation
       .getTemplate({
         StackName: stackName
       })
       .promise()
-      .catch(() => {
-        return null
+      .catch((err) => {
+        console.log('Error getting stack template', JSON.stringify(err, Object.getOwnPropertyNames(err), 2))
+        if (err.message.includes('does not exist')) {
+          return null
+        } else {
+          throw err
+        }
       })
 
     if (existingTemplate) {
