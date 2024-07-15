@@ -25,6 +25,20 @@ class RestApiLog {
     }
   }
 
+  async getLogGroupByName(name) {
+    console.log('==============GET LOG GROUP NAME==============')
+    const { logGroups } = await cloudWatchLogs
+      .describeLogGroups({
+        logGroupNamePattern: name
+      })
+      .promise()
+    console.log(`describeLogGroups result: ${JSON.stringify(logGroups)}`)
+
+    const logGroup = logGroups.find((l) => l.logGroupName === name)
+
+    return logGroup
+  }
+
   async addApiGatewayLogGroup() {
     console.log('==============ADD API GATEWAY LOG GROUP==============')
     const template = this.serverless.service.provider.compiledCloudFormationTemplate
@@ -55,7 +69,7 @@ class RestApiLog {
       } else {
         console.log('ApiGatewayLogGroup resource not exists in existing stack... checking if log group ald exists')
 
-        const logGroup = await getLogGroupByName(this.configuration['log-group'])
+        const logGroup = await this.getLogGroupByName(this.configuration['log-group'])
         if (!logGroup) {
           template.Resources.ApiGatewayLogGroup = {
             Type: 'AWS::Logs::LogGroup',
@@ -81,20 +95,6 @@ class RestApiLog {
     }
   }
 
-  async getLogGroupByName(name) {
-    console.log('==============GET LOG GROUP NAME==============')
-    const { logGroups } = await cloudWatchLogs
-      .describeLogGroups({
-        logGroupNamePattern: name
-      })
-      .promise()
-    console.log(`describeLogGroups result: ${JSON.stringify(logGroups)}`)
-
-    const logGroup = logGroups.find((l) => l.logGroupName === name)
-
-    return logGroup
-  }
-
   async enableRestApiLog() {
     console.log('==============ENABLE REST API LOG==============')
     try {
@@ -107,7 +107,7 @@ class RestApiLog {
       const stage = await apiGateway.getStage({ restApiId, stageName }).promise()
       console.log('stage', stage)
 
-      const logGroup = await getLogGroupByName(this.configuration['log-group'])
+      const logGroup = await this.getLogGroupByName(this.configuration['log-group'])
 
       if (logGroup) {
         const destinationArn = logGroup.arn.replace(':*', '')
