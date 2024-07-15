@@ -43,7 +43,7 @@ class RestApiLog {
       console.log('stack template exists, checking if log group exists in stack')
       const jsonTemplate = JSON.parse(existingTemplate.TemplateBody)
 
-      if (jsonTemplate.Resources?.ApiGatewayLogGroup) {
+      if (jsonTemplate.Resources && jsonTemplate.Resources.ApiGatewayLogGroup) {
         console.log('ApiGatewayLogGroup resource exists in existing stack, maintaining it')
         template.Resources.ApiGatewayLogGroup = {
           Type: 'AWS::Logs::LogGroup',
