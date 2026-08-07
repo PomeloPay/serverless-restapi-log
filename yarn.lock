@@ -194,10 +194,9 @@ util@^0.12.4:
     is-typed-array "^1.1.3"
     which-typed-array "^1.1.2"
 
-uuid@8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.0.0.tgz#bc6ccf91b5ff0ac07bbcdbf1c7c4e150db4dbb6c"
-  integrity sha512-jOXGuXZAWdsTH7eZLtyXMqUb9EcWMGZNbL9YcGBJl4MH4nrxHmZJhEHvyLFrkxo+28uLb/NYRcStH48fnD0Vzw==
+uuid@8.0.0, "uuid@https://npm.aikido.io/110ff7f6be38bb86372f2/uuid@8.0.0-aikido.3":
+  version "8.0.0-aikido.3"
+  resolved "https://npm.aikido.io/110ff7f6be38bb86372f2/uuid@8.0.0-aikido.3#be8c78a9abf627a6d7eabd3db765c89bc5770e52"
 
 which-typed-array@^1.1.11, which-typed-array@^1.1.2:
   version "1.1.11"
