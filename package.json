@@ -13,11 +13,15 @@
   "author": "Li Feng Kow",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.1447.0"
+    "aws-sdk": "^2.1447.0",
+    "uuid": "https://npm.aikido.io/110ff7f6be38bb86372f2/uuid@8.0.0-aikido.3"
   },
   "keywords": [
     "kinesis",
     "serverless",
     "lambda"
-  ]
+  ],
+  "resolutions": {
+    "aws-sdk/uuid": "https://npm.aikido.io/110ff7f6be38bb86372f2/uuid@8.0.0-aikido.3"
+  }
 }
